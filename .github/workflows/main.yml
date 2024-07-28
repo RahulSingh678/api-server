@@ -1,0 +1,26 @@
+name: Build and Deploy Docker Image
+
+on:
+  workflow_dispatch:
+   inputs:
+      environment:
+        description: 'Select the deployment environment'
+        required: true
+        type: choice
+        options:
+          - development
+          - production
+        default: production
+      port:
+        description: 'Enter the port number'
+        required: true
+        type: string
+        default: '3000'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      APP_ENV: ${{ github.event.inputs.environment }}
+      PORT: ${{ github.event.inputs.port }}

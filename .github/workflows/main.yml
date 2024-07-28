@@ -19,7 +19,7 @@ on:
 
 jobs:
   job-main:
-    if: ${GITHUB_REF#refs/*/} == 'main'
+    if: GITHUB_REF#refs/*/ == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
         run: echo "This job runs only on the main branch."
 
   job-develop:
-    if: ${GITHUB_REF#refs/*/} == 'develop'
+    if: GITHUB_REF#refs/*/ == 'develop'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

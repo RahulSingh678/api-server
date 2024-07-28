@@ -30,4 +30,4 @@ jobs:
         run: |
           echo "The job_id is: $APP_ENV"
           echo "The port number is: $PORT"
-          echo "The branch is: ${{ github.haed_ref }}"
+          echo "The branch is: ${{ github.head_ref }}"

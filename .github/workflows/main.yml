@@ -18,20 +18,17 @@ on:
         default: '3000'
 
 jobs:
-  job-main:
-    if: github.ref == 'refs/heads/main'
+  build-and-deploy: 
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run job for main branch
-        run: echo "This job runs only on the main branch."
-
-  job-develop:
-    if: github.ref == 'refs/heads/develop'
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [main, feature]
+    env:
+      MY_VARIABLE: ${{ matrix.branch == 'main' && 'main-branch-value' || 'feature-branch-value' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Run job for develop branch
-        run: echo "This job runs only on the develop branch."
+        run: echo "This job runs only on the ${MY_VARIABLE}."
+  
+    

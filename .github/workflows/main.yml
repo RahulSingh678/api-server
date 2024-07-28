@@ -2,7 +2,7 @@ name: Build and Deploy Docker Image
 
 on:
   workflow_dispatch:
-   inputs:
+    inputs:
       environment:
         description: 'Select the deployment environment'
         required: true
@@ -24,3 +24,9 @@ jobs:
     env:
       APP_ENV: ${{ github.event.inputs.environment }}
       PORT: ${{ github.event.inputs.port }}
+
+    steps:
+      - name: Show default environment variables
+        run: |
+          echo "The job_id is: $APP_ENV"
+          echo "The port number is: $PORT"

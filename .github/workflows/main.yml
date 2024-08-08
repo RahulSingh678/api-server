@@ -18,20 +18,19 @@ on:
         default: '3000'
 
 jobs:
-  job-main:
-    if: GITHUB_REF#refs/*/ == 'main'
+  zip-folder:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run job for main branch
-        run: echo "This job runs only on the main branch."
 
-  job-develop:
-    if: GITHUB_REF#refs/*/ == 'develop'
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Run job for develop branch
-        run: echo "This job runs only on the develop branch."
+
+      - name: Create zip of folder a
+        run: |
+          zip -r folder_a.zip folder/New folder
+
+      - name: Upload zip as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: folder-a-zip
+          path: folder_a.zip

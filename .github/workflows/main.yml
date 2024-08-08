@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: folder-a-zip
-          path: folder_a.zip
+          path: ../archive.zip

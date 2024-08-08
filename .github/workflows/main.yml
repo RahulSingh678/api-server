@@ -26,8 +26,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create zip of folder a
+        working-directory: ./A
         run: |
-          zip -r folder_a.zip ./A
+          zip -r ../archive.zip .
 
       - name: Upload zip as artifact
         uses: actions/upload-artifact@v3

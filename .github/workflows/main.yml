@@ -27,7 +27,7 @@ jobs:
 
       - name: Create zip of folder a
         run: |
-          zip -r folder_a.zip A
+          zip -r folder_a.zip ./A
 
       - name: Upload zip as artifact
         uses: actions/upload-artifact@v3

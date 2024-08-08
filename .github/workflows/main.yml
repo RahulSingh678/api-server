@@ -28,10 +28,10 @@ jobs:
       - name: Create zip of folder a
         working-directory: ./A
         run: |
-          zip -r ../archive.zip .
+          zip -r archive.zip .
 
       - name: Upload zip as artifact
         uses: actions/upload-artifact@v3
         with:
           name: folder-a-zip
-          path: ../archive.zip
+          path: archive.zip

@@ -29,3 +29,9 @@ jobs:
         working-directory: ./A
         run: |
           zip -r archive.zip .
+
+      - name: Upload archive.zip as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive
+          path: ./A/archive.zip
